@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <title>Create Account | Scholarly Modernism</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+        <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                "colors": {
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#7c839b",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed": "#dde3eb",
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "primary-fixed": "#dae2fd",
+                        "secondary-container": "#d5e3fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary-container": "#57657b",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#76777d",
+                        "surface-container": "#eceef0",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#131b2e",
+                        "on-tertiary-fixed": "#161c22",
+                        "inverse-primary": "#bec6e0",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-tertiary-container": "#7e848c",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "outline-variant": "#c6c6cd",
+                        "primary": "#000000",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-container": "#161c22",
+                        "secondary": "#515f74",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-fixed": "#d5e3fd",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "surface-variant": "#e0e3e5",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface-variant": "#45464d"
+                },
+                "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                },
+                "spacing": {
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "stack-lg": "48px",
+                        "margin-desktop": "48px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "stack-md": "24px"
+                },
+                "fontFamily": {
+                        "headline-md": ["\"Source Serif 4\""],
+                        "label-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["\"Source Serif 4\""],
+                        "title-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["\"Source Serif 4\""],
+                        "display-lg-mobile": ["\"Source Serif 4\""]
+                },
+                "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                }
+            },
+            },
+        }
+        </script>
+
+        <link rel="stylesheet" href="../../static/css/style.css">
+    </head>
+
+    <body class="min-h-screen flex flex-col font-body-md">
+    <!-- Top Navigation Bar -->
+    <header class="w-full top-0 sticky bg-surface border-b border-outline-variant z-50">
+        <div class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop h-20">
+            <div class="font-headline-sm text-headline-sm text-primary tracking-tight">Scholarly Modernism</div>
+
+            <nav class="hidden md:flex gap-stack-md items-center">
+                <a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md" href="#">Home</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md" href="#">Catalog</a>
+                <a class="text-primary border-b-2 border-primary pb-1 font-bold font-label-md" href="#">Login</a>
+                <button class="bg-primary text-on-primary px-stack-md py-2 text-label-sm rounded-lg scale-95 active:opacity-80 transition-all">Join</button>
+            </nav>
+
+            <button class="md:hidden text-primary">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center py-stack-lg px-margin-mobile">
+        <div class="w-full max-w-[1100px] bg-surface-container-lowest grid grid-cols-1 md:grid-cols-2 shadow-sm border border-outline-variant rounded-lg overflow-hidden stagger-in">
+        
+            <!-- Left Side: Visual/Context -->
+            <div class="hidden md:block relative h-full min-h-[600px] bg-primary-container overflow-hidden">
+                <img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A serene, quiet library interior with floor-to-ceiling dark oak bookshelves filled with leather-bound books. Soft, natural sunlight filters through a tall window, illuminating floating dust motes in a minimalist and intellectual atmosphere. The perspective is symmetric and architectural, reflecting a prestigious Scholarly Modernism aesthetic with a color palette of deep navy, slate, and warm wood tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQBrbzqKjDrltd2wb9e0-5CJa8plCsqHv7GMiALgOrrHKAXwDR27s0QZQShXdCw0OFMCGfKNQeQikMZI0tEby_3psH47o5hJx79wv5VlO0bGZmmpc3tPya2Ks6nC-l6l4pxIvgbkC5uv-JvrYac9ZrgwjyL1wvJOuUW47REZdATvkVb_Ejmyau6n58ynMdbf8YxpbZTXH9LDwNJ36EaQNYYxi50eCnhacCV4AtTfpXgEbxfuLrXmbvO3VZxK0CHScK0YZXIllM0bc"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-container to-transparent opacity-80"></div>
+
+                <div class="absolute bottom-0 left-0 p-stack-lg text-on-primary">
+                    <h1 class="font-headline-md text-headline-md mb-stack-sm text-white">Join the Archives</h1>
+
+                    <p class="font-body-lg text-body-lg text-on-primary-container leading-relaxed opacity-90">
+                        Access over two million digitized manuscripts, rare books, and peer-reviewed journals within a modern research environment.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Side: Account Form -->
+            <div class="p-stack-lg md:p-16 flex flex-col justify-center">
+                <div class="mb-stack-lg">
+                <span class="text-label-sm font-label-sm text-secondary uppercase tracking-widest block mb-2">Member Registration</span>
+                <h2 class="font-headline-md text-headline-md text-primary mb-2">Create Account</h2>
+                <p class="text-on-surface-variant font-body-md">Begin your intellectual journey with our curated collection.</p>
+                </div>
+
+                <form class="space-y-stack-md" onsubmit="return false">
+
+                    <!-- Name Input -->
+                    <div class="group">
+                        <label class="block text-label-sm font-label-sm text-on-surface-variant uppercase mb-2" for="name">Full Name</label>
+                        <input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md text-primary form-input-focus placeholder:text-outline-variant transition-all" id="name" placeholder="E.g. Julian Barnes" type="text"/>
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="group">
+                        <label class="block text-label-sm font-label-sm text-on-surface-variant uppercase mb-2" for="email">Email Address</label>
+                        <input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md text-primary form-input-focus placeholder:text-outline-variant transition-all" id="email" placeholder="scholar@institution.edu" type="email"/>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="group">
+                        <label class="block text-label-sm font-label-sm text-on-surface-variant uppercase mb-2" for="password">Password</label>
+
+                        <div class="relative">
+                            <input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md text-primary form-input-focus placeholder:text-outline-variant transition-all" id="password" placeholder="••••••••" type="password"/>
+                            <button class="absolute right-0 top-3 text-on-surface-variant hover:text-primary" type="button">
+                                <span class="material-symbols-outlined text-[20px]">visibility</span>
+                            </button>
+                        </div>
+
+                        <p class="mt-2 text-label-sm text-on-surface-variant font-label-sm">Minimum 8 characters</p>
+                    </div>
+
+                    <!-- Terms & Agreement -->
+                    <div class="flex items-start gap-3 pt-2">
+                        <input class="mt-1 rounded-sm border-outline-variant text-primary focus:ring-primary h-4 w-4" id="terms" type="checkbox"/>
+                        <label class="text-label-md font-label-md text-on-surface-variant leading-tight" for="terms">
+                            I agree to the 
+                            <a class="text-primary hover:underline underline-offset-4" href="#">Terms of Service</a> and <a class="text-primary hover:underline underline-offset-4" href="#">Privacy Policy</a>.
+                        </label>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="pt-stack-md flex flex-col gap-4">
+                        <button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-wider hover:opacity-90 active:scale-[0.98] transition-all shadow-sm" type="submit">
+                                                    Initialize Account
+                        </button>
+
+                        <div class="flex items-center gap-4 py-2">
+                            <div class="flex-grow h-[1px] bg-outline-variant"></div>
+                            <span class="text-label-sm text-on-surface-variant uppercase font-label-sm">Or Register with</span>
+                            <div class="flex-grow h-[1px] bg-outline-variant"></div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-stack-sm">
+                            <button class="flex items-center justify-center gap-2 border border-outline-variant py-3 rounded-lg hover:bg-surface-container-low transition-all font-label-md" type="button">
+                                <span class="material-symbols-outlined text-[18px]">account_balance</span>
+                                    Institutional
+                            </button>
+
+                            <button class="flex items-center justify-center gap-2 border border-outline-variant py-3 rounded-lg hover:bg-surface-container-low transition-all font-label-md" type="button">
+                                <span class="material-symbols-outlined text-[18px]">school</span>
+                                                            Academic
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <p class="mt-stack-lg text-center font-body-md text-on-surface-variant">
+                    Already a member? <a class="text-primary font-bold hover:underline underline-offset-4" href="#">Sign in here</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-stack-lg bg-surface-container border-t border-outline-variant">
+        <div class="max-w-container-max mx-auto px-margin-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-stack-sm">
+            <div class="font-headline-sm text-headline-sm text-primary">Scholarly Modernism</div>
+            <div class="text-label-sm font-label-sm text-on-surface-variant text-center md:text-left">
+                        © 2024 Scholarly Modernism. Curated for the intellectual mind.
+            </div>
+
+            <div class="flex gap-stack-md">
+                <a class="text-on-surface-variant hover:underline decoration-1 underline-offset-4 font-label-sm" href="#">Archives</a>
+                <a class="text-on-surface-variant hover:underline decoration-1 underline-offset-4 font-label-sm" href="#">Terms of Service</a>
+                <a class="text-on-surface-variant hover:underline decoration-1 underline-offset-4 font-label-sm" href="#">Privacy Policy</a>
+                <a class="text-on-surface-variant hover:underline decoration-1 underline-offset-4 font-label-sm" href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+            // Subtle micro-interaction for form inputs
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.parentElement.querySelector('label').classList.replace('text-on-surface-variant', 'text-primary');
+                });
+                input.addEventListener('blur', () => {
+                    if (input.value === '') {
+                        input.parentElement.querySelector('label').classList.replace('text-primary', 'text-on-surface-variant');
+                    }
+                });
+            });
+
+            // Simple password toggle logic
+            const togglePass = document.querySelector('button[type="button"] span.material-symbols-outlined');
+            if (togglePass) {
+                togglePass.parentElement.addEventListener('click', () => {
+                    const passInput = document.getElementById('password');
+                    if (passInput.type === 'password') {
+                        passInput.type = 'text';
+                        togglePass.textContent = 'visibility_off';
+                    } else {
+                        passInput.type = 'password';
+                        togglePass.textContent = 'visibility';
+                    }
+                });
+            }
+    </script>
+    </body>
+</html>
