@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Profile | Scholarly Modernism</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    
+    <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "on-tertiary-container": "#7e848c",
+                            "on-error": "#ffffff",
+                            "on-surface": "#191c1e",
+                            "inverse-primary": "#bec6e0",
+                            "background": "#f7f9fb",
+                            "surface": "#f7f9fb",
+                            "surface-bright": "#f7f9fb",
+                            "surface-variant": "#e0e3e5",
+                            "inverse-on-surface": "#eff1f3",
+                            "on-secondary-fixed-variant": "#3a485c",
+                            "surface-container-low": "#f2f4f6",
+                            "primary-container": "#131b2e",
+                            "on-background": "#191c1e",
+                            "surface-container-high": "#e6e8ea",
+                            "primary": "#000000",
+                            "tertiary-fixed": "#dde3eb",
+                            "on-secondary": "#ffffff",
+                            "tertiary": "#000000",
+                            "on-tertiary": "#ffffff",
+                            "surface-tint": "#565e74",
+                            "primary-fixed": "#dae2fd",
+                            "on-tertiary-fixed": "#161c22",
+                            "on-secondary-fixed": "#0d1c2f",
+                            "secondary-fixed-dim": "#b9c7e0",
+                            "outline-variant": "#c6c6cd",
+                            "on-primary": "#ffffff",
+                            "on-surface-variant": "#45464d",
+                            "outline": "#76777d",
+                            "on-tertiary-fixed-variant": "#41474e",
+                            "primary-fixed-dim": "#bec6e0",
+                            "on-primary-fixed-variant": "#3f465c",
+                            "error-container": "#ffdad6",
+                            "inverse-surface": "#2d3133",
+                            "surface-dim": "#d8dadc",
+                            "surface-container-highest": "#e0e3e5",
+                            "secondary-container": "#d5e3fd",
+                            "surface-container-lowest": "#ffffff",
+                            "tertiary-container": "#161c22",
+                            "secondary-fixed": "#d5e3fd",
+                            "on-primary-container": "#7c839b",
+                            "error": "#ba1a1a",
+                            "on-secondary-container": "#57657b",
+                            "on-primary-fixed": "#131b2e",
+                            "tertiary-fixed-dim": "#c1c7cf",
+                            "secondary": "#515f74",
+                            "surface-container": "#eceef0",
+                            "on-error-container": "#93000a"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                        },
+                        "spacing": {
+                            "stack-md": "24px",
+                            "stack-lg": "48px",
+                            "container-max": "1280px",
+                            "base": "8px",
+                            "margin-mobile": "20px",
+                            "gutter": "24px",
+                            "stack-sm": "12px",
+                            "margin-desktop": "48px"
+                        },
+                        "fontFamily": {
+                            "display-lg-mobile": ["\"Source Serif 4\""],
+                            "body-md": ["Hanken Grotesk"],
+                            "title-lg": ["Hanken Grotesk"],
+                            "label-md": ["Hanken Grotesk"],
+                            "headline-md": ["\"Source Serif 4\""],
+                            "display-lg": ["\"Source Serif 4\""],
+                            "label-sm": ["Hanken Grotesk"],
+                            "body-lg": ["Hanken Grotesk"],
+                            "headline-sm": ["\"Source Serif 4\""]
+                        },
+                        "fontSize": {
+                            "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                            "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                            "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                            "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                        }
+                    },
+                },
+            }
+        </script>
+        
+    <style>
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+            body {
+                background-color: #F8FAFC; /* Surface 0 from guidance */
+            }
+            .book-card:hover {
+                box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05);
+            }
+        </style>
+
+    </head>
+
+    <body class="font-body-md text-on-surface">
+        <!-- TopNavBar -->
+        <nav class="w-full top-0 sticky bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline z-50 flat no shadows">
+            <div class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop h-20">
+                <div class="font-headline-sm text-headline-sm text-primary dark:text-on-primary-fixed tracking-tight">Scholarly Modernism</div>
+
+                <div class="hidden md:flex items-center space-x-gutter">
+                    <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-lg text-body-lg" href="#">Home</a>
+                    <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-lg text-body-lg" href="{{ url_for('Home_page')}}">Catalog</a>
+                    <a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-bold font-body-lg text-body-lg" href="{{ url_for('profile_page')}}">Profile</a>
+                </div>
+
+                <div class="flex items-center gap-base">
+                    <button class="bg-primary text-on-primary px-6 py-2 rounded-DEFAULT scale-95 active:opacity-80 transition-all font-label-md text-label-md">Join</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg min-h-screen">
+
+            <header class="mb-stack-lg">
+                <h1 class="font-headline-md text-headline-md text-primary mb-2">Scholar Profile</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[720px]">Manage your scholarly identity and curated collections within the archives.</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
+
+                <!-- Left Column: User Profile Information -->
+                <section class="md:col-span-4 flex flex-col gap-stack-md">
+                    <div class="bg-surface-container-lowest p-stack-md border border-outline-variant rounded-DEFAULT">
+                        <h2 class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-stack-sm">Account Details</h2>
+                        
+                        <div class="space-y-stack-md">
+
+                            <!-- Username -->
+                            <div class="group">
+                                <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Username</label>
+                                
+                                <div class="flex items-center justify-between border-b border-outline py-2 focus-within:border-primary transition-colors">
+                                    <span id="username" class="font-headline-sm text-headline-sm">
+                                        Loading...
+                                    </span>
+
+                                    <button class="text-on-tertiary-container hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined text-[20px]">edit</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="group">
+                                <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Email</label>
+
+                                <div class="flex items-center justify-between border-b border-outline py-2 focus-within:border-primary transition-colors">
+                                    <span id="email" class="font-body-lg text-body-lg">
+                                        Loading...
+                                    </span>
+                                    <button class="text-on-tertiary-container hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined text-[20px]">mail</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="group">
+                                <label class="block font-label-sm text-label-sm uppercase text-on-surface-variant mb-1">Password</label>
+                            
+                                <div class="flex items-center justify-between border-b border-outline py-2 focus-within:border-primary transition-colors">
+                                    <span class="font-body-lg text-body-lg tracking-[0.3em]">••••••••</span>
+                                    <button class="font-label-md text-label-md text-secondary hover:text-primary transition-colors">SHOW</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-stack-lg pt-stack-sm">
+                            <button class="w-full bg-primary text-on-primary py-3 rounded-DEFAULT font-label-md text-label-md uppercase tracking-wider transition-all active:scale-95">Update Information</button>
+                            <button class="w-full mt-stack-sm border border-outline text-on-surface py-3 rounded-DEFAULT font-label-md text-label-md uppercase tracking-wider hover:bg-surface-container-low transition-all">Sign Out</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-primary-container text-on-primary-container p-stack-md rounded-DEFAULT">
+                        <p class="font-label-sm text-label-sm mb-2 opacity-70">CURRENT STATUS</p>
+                        <p class="font-title-lg text-title-lg text-on-primary-fixed">Senior Research Fellow</p>
+                        <p class="font-body-md text-body-md mt-1 opacity-80">Access granted to the Restricted Physical Archives through Dec 2024.</p>
+                    </div>
+                </section>
+
+                <!-- Right Column: Your Collection -->
+                <section class="md:col-span-8">
+                    <div class="flex items-baseline justify-between mb-stack-md border-b border-outline-variant pb-2">
+                        <h2 class="font-headline-sm text-headline-sm text-primary">Your Collection</h2>
+                        <span class="font-label-md text-label-md text-on-surface-variant">3 ITEMS</span>
+                    </div>
+                
+                <div
+                    id="favorite-books-container"
+                    class="grid grid-cols-2 lg:grid-cols-3 gap-gutter">
+                </div>
+
+                <template id="favorite-template">
+
+                    <div class="book-card flex flex-col gap-2 group transition-all duration-300">
+
+                        <div class="aspect-[0.73] relative overflow-hidden border border-outline-variant bg-surface-container-high">
+
+                            <img
+                                class="book-cover w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+
+                        </div>
+
+                        <div class="mt-2">
+
+                            <h3 class="book-title font-title-lg text-title-lg text-primary leading-tight"></h3>
+
+                            <p class="book-author font-label-md text-label-md text-on-surface-variant"></p>
+
+                            <button
+                                class="remove-favorite mt-1 font-label-sm text-label-sm text-secondary hover:text-error transition-colors flex items-center gap-1 opacity-70 hover:opacity-100">
+
+                                <span class="material-symbols-outlined text-[16px]">
+                                    close
+                                </span>
+
+                                Remove
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full mt-stack-lg bg-surface-container dark:bg-tertiary-container border-t border-outline-variant dark:border-outline">
+            <div class="max-w-container-max mx-auto px-margin-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-stack-sm">
+
+                <div class="font-headline-sm text-headline-sm text-primary dark:text-on-primary-fixed">Scholarly Modernism</div>
+
+                <div class="flex flex-wrap justify-center gap-gutter text-on-surface dark:text-on-tertiary-container">
+                    <a class="font-label-sm text-label-sm hover:underline decoration-1 underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">Archives</a>
+                    <a class="font-label-sm text-label-sm hover:underline decoration-1 underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+                    <a class="font-label-sm text-label-sm hover:underline decoration-1 underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+                    <a class="font-label-sm text-label-sm hover:underline decoration-1 underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">Contact Us</a>
+                </div>
+
+                <div class="font-body-md text-body-md text-on-surface dark:text-on-tertiary-container opacity-90">
+                                © 2024 Scholarly Modernism. Curated for the intellectual mind.
+                </div>
+            </div>
+        </footer>
+
+        <script>
+                // Micro-interaction for password toggle
+                document.querySelector('button.text-secondary').addEventListener('click', function() {
+                    const span = this.previousElementSibling;
+                    if (this.textContent === 'SHOW') {
+                        span.textContent = 'modern_scholar_2024';
+                        span.classList.remove('tracking-[0.3em]');
+                        this.textContent = 'HIDE';
+                    } else {
+                        span.textContent = '••••••••';
+                        span.classList.add('tracking-[0.3em]');
+                        this.textContent = 'SHOW';
+                    }
+                });
+
+                // ================= PROFILE =================
+
+                document.addEventListener('DOMContentLoaded', async () => {
+
+                    try {
+
+                        const response = await fetch('/api/profile');
+                        const result = await response.json();
+
+                        if (result.status === 'success') {
+
+                            document.getElementById('username').textContent =
+                                result.data.username;
+
+                            document.getElementById('email').textContent =
+                                result.data.email;
+
+                        } else {
+
+                            alert(result.message);
+
+                        }
+
+                    } catch (error) {
+
+                        console.error(error);
+                        alert('Gagal mengambil data profile');
+
+                    }
+
+                });
+
+
+                // ================= FAVORITES =================
+
+                document.addEventListener('DOMContentLoaded', loadFavorites);
+
+                async function loadFavorites() {
+
+                    try {
+
+                        const response = await fetch('/api/favorites');
+                        const result = await response.json();
+
+                        console.log(result);
+
+                        if (result.status !== 'success') {
+
+                            alert(result.message);
+                            return;
+
+                        }
+
+                        const container =
+                            document.getElementById('favorite-books-container');
+
+                        const template =
+                            document.getElementById('favorite-template');
+
+                        container.innerHTML = '';
+
+                        result.data.forEach(book => {
+
+                            const clone =
+                                template.content.cloneNode(true);
+
+                            const card =
+                                clone.querySelector('.book-card');
+
+                            const cover =
+                                clone.querySelector('.book-cover');
+
+                            const title =
+                                clone.querySelector('.book-title');
+
+                            const author =
+                                clone.querySelector('.book-author');
+
+                            const removeBtn =
+                                clone.querySelector('.remove-favorite');
+
+                            cover.src = book.cover_image;
+                            cover.alt = book.title;
+
+                            title.textContent = book.title;
+                            author.textContent = book.author;
+
+                            removeBtn.addEventListener('click', async () => {
+
+                                if (!confirm('Hapus buku dari favorit?')) {
+                                    return;
+                                }
+
+                                try {
+
+                                    const response = await fetch(
+                                        `/api/favorites/${book.id}`,
+                                        {
+                                            method: 'DELETE'
+                                        }
+                                    );
+
+                                    const result = await response.json();
+
+                                    if (result.status === 'success') {
+
+                                        card.remove();
+
+                                    } else {
+
+                                        alert(result.message);
+
+                                    }
+
+                                } catch (error) {
+
+                                    console.error(error);
+                                    alert('Gagal menghapus favorit');
+
+                                }
+
+                            });
+
+                            container.appendChild(clone);
+
+                        });
+
+                    } catch (error) {
+
+                        console.error(error);
+                        alert('Gagal mengambil data favorit');
+
+                    }
+
+                }
+                        
+        </script>
+
+    </body>
+</html>

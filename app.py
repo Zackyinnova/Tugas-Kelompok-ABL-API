@@ -130,20 +130,32 @@ def Home_page():
 def detail_book(id):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-
-    cursor.execute(
-        "SELECT * FROM books WHERE id = %s",
-        (id,)
-    )
-
+ 
+    # Ambil data buku
+    cursor.execute("SELECT * FROM books WHERE id = %s", (id,))
     book = cursor.fetchone()
-
+ 
+    # Cek apakah buku ini sudah difavoritkan oleh user yang login
+    is_favorited = False
+    if session.get('user_id'):
+        cursor.execute(
+            "SELECT id FROM favorites WHERE user_id = %s AND book_id = %s",
+            (session['user_id'], id)
+        )
+        is_favorited = cursor.fetchone() is not None
+ 
     cursor.close()
     conn.close()
+ 
+    return render_template('BookDetail.html',
+                           book=book,
+                           is_favorited=is_favorited)  # kirim status ke HTML
 
-    return render_template('BookDetail.html', 
-                           book=book
-                           )
+@app.route('/profile')
+def profile_page():
+    if not session.get('user_id'):
+        return redirect(url_for('login_page'))
+    return render_template('ProfilPage.html')
                            
 
 @app.route('/logout')
@@ -155,27 +167,73 @@ def logout():
 
 
 
+############################ PROFILE & FAVORITES API ############################
 
-############################ dAFTAR API ############################ 
+#api untuk mengambil data akun dari id
+@app.route('/api/profile', methods=['GET'])
+def api_profile():
 
-@app.route('/api/users', methods=['GET'])
-def api_users():
+    user_id = session.get('user_id')
+
+    if not user_id:
+        return jsonify({
+            "status": "error",
+            "message": "Belum login"
+        }), 401
+
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute(
+        "SELECT id, username, email FROM users WHERE id=%s",
+        (user_id,)
+    )
+
+    user = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return jsonify({
+        "status": "success",
+        "data": user
+    })
+
+
+@app.route('/api/favorites', methods=['GET'])
+def api_get_favorites():
+
+    user_id = session.get('user_id')
+
+    if not user_id:
+        return jsonify({
+            "status": "error",
+            "message": "Belum login"
+        }), 401
+
     try:
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
 
-        cursor.execute(
-            "SELECT id, username, email FROM users"
-        )
+        cursor.execute("""
+            SELECT
+                books.id,
+                books.title,
+                books.author,
+                books.cover_image
+            FROM favorites
+            JOIN books ON favorites.book_id = books.id
+            WHERE favorites.user_id = %s
+        """, (user_id,))
 
-        users = cursor.fetchall()
+        favorites = cursor.fetchall()
 
         cursor.close()
         conn.close()
 
         return jsonify({
             "status": "success",
-            "data": users
+            "data": favorites
         })
 
     except Exception as e:
@@ -184,112 +242,93 @@ def api_users():
             "message": str(e)
         }), 500
     
-@app.route('/api/register', methods=['POST'])
-def api_register():
 
-    data = request.get_json()
-
-    username = data.get('username')
-    email = data.get('email')
-    password = data.get('password')
-
-    if not username or not email or not password:
+#berfungsi untuk delete buku dari favorit
+@app.route('/api/favorites/<int:book_id>', methods=['DELETE'])
+def api_remove_favorite(book_id):
+    """Hapus buku dari favorit"""
+    user_id = session.get('user_id')
+ 
+    if not user_id:
         return jsonify({
             "status": "error",
-            "message": "Semua field harus diisi"
-        }), 400
-
+            "message": "Belum login"
+        }), 401
+ 
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-
+ 
         cursor.execute(
-            "SELECT * FROM users WHERE username=%s OR email=%s",
-            (username, email)
+            "DELETE FROM favorites WHERE user_id = %s AND book_id = %s",
+            (user_id, book_id)
         )
+        conn.commit()
+        cursor.close()
+        conn.close()
+ 
+        return jsonify({
+            "status": "success",
+            "message": "Buku dihapus dari favorit"
+        })
+ 
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
 
+# berfungsi untuk menambahkan buku ke favorit
+@app.route('/api/favorites/<int:book_id>', methods=['POST'])
+def api_add_favorite(book_id):
+    """Tambah buku ke favorit"""
+    user_id = session.get('user_id')
+ 
+    if not user_id:
+        return jsonify({
+            "status": "error",
+            "message": "Belum login"
+        }), 401
+ 
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+ 
+        # Cek apakah sudah ada
+        cursor.execute(
+            "SELECT id FROM favorites WHERE user_id = %s AND book_id = %s",
+            (user_id, book_id)
+        )
+ 
         if cursor.fetchone():
             cursor.close()
             conn.close()
-
             return jsonify({
                 "status": "error",
-                "message": "Username atau email sudah digunakan"
+                "message": "Buku sudah ada di favorit"
             }), 409
-
-        hashed_password = generate_password_hash(password)
-
+ 
+        # Simpan ke database
         cursor.execute(
-            "INSERT INTO users(username,email,password) VALUES(%s,%s,%s)",
-            (username, email, hashed_password)
+            "INSERT INTO favorites (user_id, book_id) VALUES (%s, %s)",
+            (user_id, book_id)
         )
-
         conn.commit()
-
         cursor.close()
         conn.close()
-
+ 
         return jsonify({
             "status": "success",
-            "message": "User berhasil dibuat"
+            "message": "Buku berhasil ditambahkan ke favorit"
         }), 201
-
+ 
     except Exception as e:
         return jsonify({
             "status": "error",
             "message": str(e)
         }), 500
-    
 
-@app.route('/api/login', methods=['POST'])
-def api_login():
 
-    data = request.get_json()
-
-    email = data.get('email')
-    password = data.get('password')
-
-    try:
-        conn = get_db_connection()
-        cursor = conn.cursor(dictionary=True)
-
-        cursor.execute(
-            "SELECT * FROM users WHERE email=%s",
-            (email,)
-        )
-
-        user = cursor.fetchone()
-
-        cursor.close()
-        conn.close()
-
-        if not user:
-            return jsonify({
-                "status": "error",
-                "message": "Email tidak ditemukan"
-            }), 404
-
-        if not check_password_hash(
-            user['password'],
-            password
-        ):
-            return jsonify({
-                "status": "error",
-                "message": "Password salah"
-            }), 401
-
-        return jsonify({
-            "status": "success",
-            "user_id": user['id'],
-            "username": user['username']
-        })
-
-    except Exception as e:
-        return jsonify({
-            "status": "error",
-            "message": str(e)
-        }), 500
-    
 
 if __name__ == "__main__":
     app.run(debug=True)
