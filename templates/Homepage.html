@@ -208,27 +208,29 @@
 
                         <!-- Card 1 -->
                         {% for book in books %}
-                        <div class="flex flex-col group cursor-pointer transition-all">
+                        <a href="{{url_for('detail_book', id=book.id)}}">
+                            <div class="flex flex-col group cursor-pointer transition-all">
 
-                            <div class="aspect-[2/3] w-full bg-surface-container overflow-hidden border border-outline-variant mb-stack-sm transition-transform duration-300 group-hover:-translate-y-1">
+                                <div class="aspect-[2/3] w-full bg-surface-container overflow-hidden border border-outline-variant mb-stack-sm transition-transform duration-300 group-hover:-translate-y-1">
 
-                                <img
-                                    src="{{ book.cover_image }}"
-                                    alt="{{ book.title }}"
-                                    class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
-                                >
+                                    <img
+                                        src="{{ book.cover_image }}"
+                                        alt="{{ book.title }}"
+                                        class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
+                                    >
+
+                                </div>
+
+                                <h3 class="font-title-lg text-title-lg mb-1 group-hover:text-primary transition-colors leading-tight">
+                                    {{ book.title }}
+                                </h3>
+
+                                <p class="font-label-md text-label-md text-on-surface-variant">
+                                    {{ book.author }}
+                                </p>
 
                             </div>
-
-                            <h3 class="font-title-lg text-title-lg mb-1 group-hover:text-primary transition-colors leading-tight">
-                                {{ book.title }}
-                            </h3>
-
-                            <p class="font-label-md text-label-md text-on-surface-variant">
-                                {{ book.author }}
-                            </p>
-
-                        </div>
+                        </a>
                         {% endfor %}
                     </div>
                 </div>

@@ -126,6 +126,25 @@ def Home_page():
         books=books
     )
 
+@app.route('/book/<int:id>')
+def detail_book(id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute(
+        "SELECT * FROM books WHERE id = %s",
+        (id,)
+    )
+
+    book = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return render_template('BookDetail.html', 
+                           book=book
+                           )
+                           
 
 @app.route('/logout')
 def logout():

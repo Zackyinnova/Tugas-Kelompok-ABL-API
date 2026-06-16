@@ -130,7 +130,7 @@
 
                     <div class="hidden md:flex gap-stack-md items-center h-full">
                         <a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md" href="#">Home</a>
-                        <a class="text-primary border-b-2 border-primary pb-1 font-bold font-label-md" href="#">Catalog</a>
+                        <a class="text-primary border-b-2 border-primary pb-1 font-bold font-label-md" href="{{ url_for('Home_page')}}">Catalog</a>
                         <a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md" href="#">Login</a>
                     </div>
                 </div>
@@ -143,21 +143,13 @@
         </header>
 
         <main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg min-h-screen">
-            <!-- Breadcrumbs -->
-            <nav class="mb-stack-md flex items-center gap-2 text-on-surface-variant font-label-sm uppercase tracking-wider">
-                <a class="hover:text-primary" href="#">Catalog</a>
-                <span class="material-symbols-outlined text-[14px]">chevron_right</span>
-                <a class="hover:text-primary" href="#">Philosophy</a>
-                <span class="material-symbols-outlined text-[14px]">chevron_right</span>
-                <span class="text-primary opacity-60">The Architecture of Logic</span>
-            </nav>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <!-- Left: Book Cover Section -->
                 <section class="lg:col-span-5 flex flex-col gap-stack-md">
                     <div class="relative group">
                         <div class="aspect-[3/4] bg-surface-container overflow-hidden rounded-DEFAULT border border-outline-variant book-cover-glow transition-all duration-300 group-hover:translate-y-[-4px]">
-                            <img alt="Book Cover" class="w-full h-full object-cover" data-alt="A high-quality studio photograph of a minimal book cover titled 'The Architecture of Logic'. The design is scholarly and modernist, featuring bold black serif typography on a textured off-white paper background with a single geometric orange circle in the center. The lighting is soft and directional, highlighting the subtle paper texture and the clean 1px border. The overall aesthetic is intellectual, prestigious, and extremely clear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbfGmC5jylK3KdrT-pw_BRmydLnxP1conFkuMjebkUGzHwAKr47vCT-IgMi8FWMA3GQlidPfwSfcoCXpxrD8FQhOMQYdyCd36YTVqnk6R0BT8aasPGKqoPgLdAE4V267sPl06htI1k1rPeUuuVw_Y9ZLlb4VBnbXiOU1D9KMgaXOdqkIBbx3s3BrQYEySYnjmsGgSZB7J3t2FbqMixCnGf2q9HYs7_-gPHpJxgEXW1eavnzRFT27F9onkaoIoBRIrBu4eh50VHgMA"/>
+                            <img alt="Book Cover" src="{{ url_for('static', filename=book.cover_image) }}" class="w-full h-full object-cover" data-alt="A high-quality studio photograph of a minimal book cover titled 'The Architecture of Logic'. The design is scholarly and modernist, featuring bold black serif typography on a textured off-white paper background with a single geometric orange circle in the center. The lighting is soft and directional, highlighting the subtle paper texture and the clean 1px border. The overall aesthetic is intellectual, prestigious, and extremely clear."/>
                         </div>
                     </div>
 
@@ -178,9 +170,9 @@
                 <!-- Right: Content & Metadata -->
                 <section class="lg:col-span-7 flex flex-col">
                     <div class="border-b border-outline-variant pb-stack-md mb-stack-md">
-                        <span class="text-on-secondary-container bg-secondary-container px-3 py-1 font-label-sm rounded-full mb-4 inline-block">ACADEMIC PRESS</span>
-                        <h1 class="text-display-lg font-display-lg text-primary mb-2">The Architecture of Logic: Principles of Modern Inquiry</h1>
-                        <p class="text-title-lg font-title-lg text-on-surface-variant">by Dr. Elias Thorne</p>
+                        <span class="text-on-secondary-container bg-secondary-container px-3 py-1 font-label-sm rounded-full mb-4 inline-block">{{ book.publisher }}</span>
+                        <h1 class="text-display-lg font-display-lg text-primary mb-2">{{ book.title }}</h1>
+                        <p class="text-title-lg font-title-lg text-on-surface-variant">by {{ book.author }}</p>
                     </div>
 
                     <!-- Abstract -->
@@ -188,15 +180,8 @@
                         <h2 class="text-label-sm font-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-stack-sm">Abstract</h2>
 
                         <div class="text-body-lg font-body-lg text-on-surface leading-[30px] space-y-6">
-                        <p>
-                                                    In "The Architecture of Logic," Dr. Elias Thorne presents a comprehensive re-evaluation of structural thinking in the digital age. This work serves as both a historical retrospective and a forward-looking manifesto, tracing the lineage of logical systems from the rigid structures of the Enlightenment to the fluid, networked paradigms of today.
-                                                </p>
-                        <p>
-                                                    Thorne argues that the "modernism" of our current era is not defined by aesthetic minimalism alone, but by a functional clarity that prioritizes the hierarchy of information. Through ten curated chapters, the text explores how the digital archive acts as a new physical space for intellectual pursuit, requiring a new set of navigational ethics and structural frameworks.
-                                                </p>
-                        <p>
-                                                    Drawing on archival research from the world's most prestigious libraries, this volume provides a bridge between the physical manuscript and the frictionless data point, offering a meditative yet rigorous guide for the modern researcher who seeks to find order within the infinite expanse of modern information.
-                                                </p>
+                            <P>{{ book.abstract}}</P>
+        
                         </div>
                     </article>
 
@@ -208,17 +193,17 @@
 
                             <div>
                                 <p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Publisher</p>
-                                <p class="text-body-md font-body-md text-primary">Scholarly Modernism Press</p>
+                                <p class="text-body-md font-body-md text-primary">{{ book.publisher }}</p>
                             </div>
 
                             <div>
                                 <p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Release Date</p>
-                                <p class="text-body-md font-body-md text-primary">October 2023</p>
+                                <p class="text-body-md font-body-md text-primary">{{ book.release_date }}</p>
                             </div>
 
                             <div>
                                 <p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Pages</p>
-                                <p class="text-body-md font-body-md text-primary">432 (Hardcover)</p>
+                                <p class="text-body-md font-body-md text-primary">{{ book.pages }}</p>
                             </div>
                         </div>
                     </div>
