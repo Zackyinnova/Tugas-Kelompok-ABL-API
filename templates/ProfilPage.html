@@ -190,7 +190,7 @@
                             
                                 <div class="flex items-center justify-between border-b border-outline py-2 focus-within:border-primary transition-colors">
                                     <span class="font-body-lg text-body-lg tracking-[0.3em]">••••••••</span>
-                                    <button class="font-label-md text-label-md text-secondary hover:text-primary transition-colors">SHOW</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                 <section class="md:col-span-8">
                     <div class="flex items-baseline justify-between mb-stack-md border-b border-outline-variant pb-2">
                         <h2 class="font-headline-sm text-headline-sm text-primary">Your Collection</h2>
-                        <span class="font-label-md text-label-md text-on-surface-variant">3 ITEMS</span>
+                        
                     </div>
                 
                 <div
@@ -279,19 +279,6 @@
         </footer>
 
         <script>
-                // Micro-interaction for password toggle
-                document.querySelector('button.text-secondary').addEventListener('click', function() {
-                    const span = this.previousElementSibling;
-                    if (this.textContent === 'SHOW') {
-                        span.textContent = 'modern_scholar_2024';
-                        span.classList.remove('tracking-[0.3em]');
-                        this.textContent = 'HIDE';
-                    } else {
-                        span.textContent = '••••••••';
-                        span.classList.add('tracking-[0.3em]');
-                        this.textContent = 'SHOW';
-                    }
-                });
 
                 // ================= PROFILE =================
 

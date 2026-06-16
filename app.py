@@ -185,7 +185,7 @@ def api_profile():
     cursor = conn.cursor(dictionary=True)
 
     cursor.execute(
-        "SELECT id, username, email FROM users WHERE id=%s",
+        "SELECT username, email FROM users WHERE id=%s",
         (user_id,)
     )
 
