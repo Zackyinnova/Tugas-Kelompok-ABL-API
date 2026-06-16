@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                extend: {
+                    "colors": {
+                            "error-container": "#ffdad6",
+                            "on-primary-container": "#7c839b",
+                            "surface-container-highest": "#e0e3e5",
+                            "tertiary-fixed": "#dde3eb",
+                            "error": "#ba1a1a",
+                            "background": "#f7f9fb",
+                            "primary-fixed": "#dae2fd",
+                            "secondary-container": "#d5e3fd",
+                            "primary-fixed-dim": "#bec6e0",
+                            "on-primary-fixed": "#131b2e",
+                            "on-secondary-container": "#57657b",
+                            "on-primary": "#ffffff",
+                            "on-primary-fixed-variant": "#3f465c",
+                            "tertiary": "#000000",
+                            "surface-container-lowest": "#ffffff",
+                            "outline": "#76777d",
+                            "surface-container": "#eceef0",
+                            "on-error-container": "#93000a",
+                            "primary-container": "#131b2e",
+                            "on-tertiary-fixed": "#161c22",
+                            "inverse-primary": "#bec6e0",
+                            "surface": "#f7f9fb",
+                            "inverse-surface": "#2d3133",
+                            "on-secondary-fixed": "#0d1c2f",
+                            "on-secondary-fixed-variant": "#3a485c",
+                            "on-tertiary-container": "#7e848c",
+                            "secondary-fixed-dim": "#b9c7e0",
+                            "on-tertiary-fixed-variant": "#41474e",
+                            "outline-variant": "#c6c6cd",
+                            "primary": "#000000",
+                            "inverse-on-surface": "#eff1f3",
+                            "tertiary-container": "#161c22",
+                            "secondary": "#515f74",
+                            "surface-container-low": "#f2f4f6",
+                            "surface-bright": "#f7f9fb",
+                            "secondary-fixed": "#d5e3fd",
+                            "on-secondary": "#ffffff",
+                            "on-background": "#191c1e",
+                            "surface-dim": "#d8dadc",
+                            "on-tertiary": "#ffffff",
+                            "on-surface": "#191c1e",
+                            "tertiary-fixed-dim": "#c1c7cf",
+                            "surface-variant": "#e0e3e5",
+                            "on-error": "#ffffff",
+                            "surface-tint": "#565e74",
+                            "surface-container-high": "#e6e8ea",
+                            "on-surface-variant": "#45464d"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "base": "8px",
+                            "container-max": "1280px",
+                            "stack-lg": "48px",
+                            "margin-desktop": "48px",
+                            "margin-mobile": "20px",
+                            "gutter": "24px",
+                            "stack-sm": "12px",
+                            "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                            "headline-md": ["\"Source Serif 4\""],
+                            "label-sm": ["Hanken Grotesk"],
+                            "label-md": ["Hanken Grotesk"],
+                            "display-lg": ["\"Source Serif 4\""],
+                            "title-lg": ["Hanken Grotesk"],
+                            "body-md": ["Hanken Grotesk"],
+                            "body-lg": ["Hanken Grotesk"],
+                            "headline-sm": ["\"Source Serif 4\""],
+                            "display-lg-mobile": ["\"Source Serif 4\""]
+                    },
+                    "fontSize": {
+                            "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                            "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                            "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+                },
+            }
+            </script>
+        <style>
+                body {
+                    background-color: #f7f9fb;
+                    color: #191c1e;
+                    -webkit-font-smoothing: antialiased;
+                }
+                .book-cover-glow {
+                    box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05);
+                }
+                .material-symbols-outlined {
+                    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+                }
+            </style>
+    </head>
+
+    <body class="font-body-md overflow-x-hidden">
+
+        <!-- Top Navigation Bar -->
+        <header class="w-full top-0 sticky z-50 bg-surface border-b border-outline-variant">
+            <nav class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop h-20">
+                
+                <div class="flex items-center gap-stack-lg">
+                    <span class="font-headline-sm text-headline-sm text-primary tracking-tight">Scholarly Modernism</span>
+
+                    <div class="hidden md:flex gap-stack-md items-center h-full">
+                        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md" href="#">Home</a>
+                        <a class="text-primary border-b-2 border-primary pb-1 font-bold font-label-md" href="#">Catalog</a>
+                        <a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md" href="#">Login</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-stack-md">
+                    <button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all scale-95 active:opacity-80">search</button>
+                    <button class="bg-primary text-on-primary px-6 py-2 rounded-DEFAULT font-label-md hover:opacity-90 transition-all scale-95 active:opacity-80">Join</button>
+                </div>
+            </nav>
+        </header>
+
+        <main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg min-h-screen">
+            <!-- Breadcrumbs -->
+            <nav class="mb-stack-md flex items-center gap-2 text-on-surface-variant font-label-sm uppercase tracking-wider">
+                <a class="hover:text-primary" href="#">Catalog</a>
+                <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                <a class="hover:text-primary" href="#">Philosophy</a>
+                <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                <span class="text-primary opacity-60">The Architecture of Logic</span>
+            </nav>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Left: Book Cover Section -->
+                <section class="lg:col-span-5 flex flex-col gap-stack-md">
+                    <div class="relative group">
+                        <div class="aspect-[3/4] bg-surface-container overflow-hidden rounded-DEFAULT border border-outline-variant book-cover-glow transition-all duration-300 group-hover:translate-y-[-4px]">
+                            <img alt="Book Cover" class="w-full h-full object-cover" data-alt="A high-quality studio photograph of a minimal book cover titled 'The Architecture of Logic'. The design is scholarly and modernist, featuring bold black serif typography on a textured off-white paper background with a single geometric orange circle in the center. The lighting is soft and directional, highlighting the subtle paper texture and the clean 1px border. The overall aesthetic is intellectual, prestigious, and extremely clear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbfGmC5jylK3KdrT-pw_BRmydLnxP1conFkuMjebkUGzHwAKr47vCT-IgMi8FWMA3GQlidPfwSfcoCXpxrD8FQhOMQYdyCd36YTVqnk6R0BT8aasPGKqoPgLdAE4V267sPl06htI1k1rPeUuuVw_Y9ZLlb4VBnbXiOU1D9KMgaXOdqkIBbx3s3BrQYEySYnjmsGgSZB7J3t2FbqMixCnGf2q9HYs7_-gPHpJxgEXW1eavnzRFT27F9onkaoIoBRIrBu4eh50VHgMA"/>
+                        </div>
+                    </div>
+
+                    <!-- Interaction Buttons -->
+                    <div class="flex flex-col gap-stack-sm">
+                        <button class="w-full bg-primary text-on-primary py-4 font-label-md uppercase tracking-widest hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+                                                Add to Collection
+                        </button>
+
+                        <button class="w-full border border-outline text-primary py-4 font-label-md uppercase tracking-widest hover:bg-surface-container-low transition-all flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">auto_stories</span>
+                                                Read Abstract
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Right: Content & Metadata -->
+                <section class="lg:col-span-7 flex flex-col">
+                    <div class="border-b border-outline-variant pb-stack-md mb-stack-md">
+                        <span class="text-on-secondary-container bg-secondary-container px-3 py-1 font-label-sm rounded-full mb-4 inline-block">ACADEMIC PRESS</span>
+                        <h1 class="text-display-lg font-display-lg text-primary mb-2">The Architecture of Logic: Principles of Modern Inquiry</h1>
+                        <p class="text-title-lg font-title-lg text-on-surface-variant">by Dr. Elias Thorne</p>
+                    </div>
+
+                    <!-- Abstract -->
+                    <article class="max-w-[720px]">
+                        <h2 class="text-label-sm font-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-stack-sm">Abstract</h2>
+
+                        <div class="text-body-lg font-body-lg text-on-surface leading-[30px] space-y-6">
+                        <p>
+                                                    In "The Architecture of Logic," Dr. Elias Thorne presents a comprehensive re-evaluation of structural thinking in the digital age. This work serves as both a historical retrospective and a forward-looking manifesto, tracing the lineage of logical systems from the rigid structures of the Enlightenment to the fluid, networked paradigms of today.
+                                                </p>
+                        <p>
+                                                    Thorne argues that the "modernism" of our current era is not defined by aesthetic minimalism alone, but by a functional clarity that prioritizes the hierarchy of information. Through ten curated chapters, the text explores how the digital archive acts as a new physical space for intellectual pursuit, requiring a new set of navigational ethics and structural frameworks.
+                                                </p>
+                        <p>
+                                                    Drawing on archival research from the world's most prestigious libraries, this volume provides a bridge between the physical manuscript and the frictionless data point, offering a meditative yet rigorous guide for the modern researcher who seeks to find order within the infinite expanse of modern information.
+                                                </p>
+                        </div>
+                    </article>
+
+                    <!-- Metadata Grid -->
+                    <div class="mt-stack-lg pt-stack-md border-t border-outline-variant">
+                        <h2 class="text-label-sm font-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-stack-md">Metadata &amp; Specifications</h2>
+
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-y-stack-md gap-x-gutter">
+
+                            <div>
+                                <p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Publisher</p>
+                                <p class="text-body-md font-body-md text-primary">Scholarly Modernism Press</p>
+                            </div>
+
+                            <div>
+                                <p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Release Date</p>
+                                <p class="text-body-md font-body-md text-primary">October 2023</p>
+                            </div>
+
+                            <div>
+                                <p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-1">Pages</p>
+                                <p class="text-body-md font-body-md text-primary">432 (Hardcover)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Related Content Section (Asymmetric Layout) -->
+            <section class="mt-[120px]">
+
+                <div class="flex justify-between items-end mb-stack-md border-b border-outline-variant pb-2">
+                    <h2 class="text-headline-sm font-headline-sm">Curated Companions</h2>
+                    <a class="text-label-sm font-label-sm uppercase tracking-wider text-primary flex items-center gap-1 hover:underline underline-offset-4" href="#">View Collection <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+
+                    <!-- Companion Book 1 -->
+                    <div class="group cursor-pointer">
+                        <div class="aspect-[3/4] bg-surface-container mb-stack-sm border border-outline-variant group-hover:shadow-lg transition-all duration-300">
+                            <img alt="Related Book" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A clean, minimalist book cover for a title called 'The Shape of Thought'. The cover features an abstract black ink wash on a crisp white background with elegant serif typography. The lighting is bright and airy, reflecting a modern scholarly aesthetic. Cohesive with the deep navy and soft white brand palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfaaXMST380lysjDEIbZFI4DAvXO-q81MIXIDZkRkCHjhQr8cuyHrdl4ouGCqyuihuLF9CyAc47b_UBDz6qf52zLXZ89Cke4KqF7e4mN1qjfz5k7lI_i4noCgm7ftmfb8YJHJxIPqMWw5WIYIqowZhzK5iskiIdsROfjzA2LT7RUnFZAQZ3kKL3zZs7sU-sOAg8Lphwo_3wjq_lvRZG0E0CE0A1h59D7gX_ihqBalM-xXCU2C5JNsAju5vjTKdnRZryiameRsxS4I"/>
+                        </div>
+
+                        <h3 class="text-title-lg font-title-lg leading-tight group-hover:text-primary transition-colors">The Shape of Thought</h3>
+                        <p class="text-label-md font-label-md text-on-surface-variant">Elena Vance</p>
+                    </div>
+
+                    <!-- Companion Book 2 -->
+                    <div class="group cursor-pointer">
+                        <div class="aspect-[3/4] bg-surface-container mb-stack-sm border border-outline-variant group-hover:shadow-lg transition-all duration-300">
+                            <img alt="Related Book" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A minimalist book cover titled 'Structural Integrity' with an architectural line drawing of a pillar in faint grey on an eggshell white background. High-quality scholarly book design with perfect alignment and bold navy headers. The mood is calm and academic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbDINd9D9jESVE43Paelj1FIyBLUhbso-Cr6ahbEfO8042tp-iJfy9XQr7NuKuuCMfbicVo-waZFU78hf-lvBjg8fTHMVHh81JEuObK7Oq_re4d_SE-08byBzU4WKYrT51cgQ3FlWqdHW2IJkT7pZSK3fwtzzgffqwY02rCbBvaZBJZoZEOCZzQEWf92YyArAcbctiSZ0Qj1uBvcp66irNbjt0PilG0C4Vh-YPbNruic9v_yFB7Tom498u3doijYmn662MUc9j5Og"/>
+                        </div>
+                        <h3 class="text-title-lg font-title-lg leading-tight group-hover:text-primary transition-colors">Structural Integrity</h3>
+                        <p class="text-label-md font-label-md text-on-surface-variant">Marcus Aurel</p>
+                    </div>
+
+                    <!-- Placeholder for Asymmetry -->
+                    <div class="hidden md:block col-span-2 bg-surface-container-low p-stack-md flex flex-col justify-center border border-dashed border-outline-variant">
+                        <p class="font-display-lg text-headline-sm italic text-on-surface-variant mb-4">"Logic is the anatomy of thought."</p>
+                        <p class="font-label-sm uppercase tracking-widest text-on-surface-variant opacity-60">— John Locke</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full mt-stack-lg bg-surface-container border-t border-outline-variant">
+            <div class="max-w-container-max mx-auto px-margin-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-stack-sm">
+                <div class="flex flex-col gap-2">
+                    <span class="font-headline-sm text-headline-sm text-primary">Scholarly Modernism</span>
+                    <p class="text-body-md font-body-md text-on-surface opacity-70">© 2024 Scholarly Modernism. Curated for the intellectual mind.</p>
+                </div>
+
+                <div class="flex gap-stack-md">
+                    <a class="text-on-surface-variant font-label-sm hover:underline decoration-1 underline-offset-4" href="#">Archives</a>
+                    <a class="text-on-surface-variant font-label-sm hover:underline decoration-1 underline-offset-4" href="#">Terms of Service</a>
+                    <a class="text-on-surface-variant font-label-sm hover:underline decoration-1 underline-offset-4" href="#">Privacy Policy</a>
+                    <a class="text-on-surface-variant font-label-sm hover:underline decoration-1 underline-offset-4" href="#">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+                // Micro-interaction for hover effects on metadata categories
+                document.querySelectorAll('.grid > div').forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        item.style.transform = 'translateX(4px)';
+                        item.style.transition = 'transform 0.2s ease-out';
+                    });
+                    item.addEventListener('mouseleave', () => {
+                        item.style.transform = 'translateX(0)';
+                    });
+                });
+
+                // Simple scroll reveal for the long abstract text
+                const observerOptions = {
+                    threshold: 0.1
+                };
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('article p').forEach(p => {
+                    p.style.opacity = '0';
+                    p.style.transform = 'translateY(20px)';
+                    p.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                    observer.observe(p);
+                });
+        </script>
+    </body>
+</html>

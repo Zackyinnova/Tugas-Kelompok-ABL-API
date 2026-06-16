@@ -1,23 +1,21 @@
 import mysql.connector
-import re
 from flask import session
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
-from flask import request
-import os
 
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask (__name__)
 
 app.secret_key = 'rahasia123' 
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="db_testapi"
-)
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="db_testapi"
+    )
 
 @app.route('/')
 def index():
@@ -39,7 +37,7 @@ def register_page():
 
         # --- Try-except mulai di sini ---
         try:
-            conn = db
+            conn = get_db_connection()
             cursor = conn.cursor()
 
             cursor.execute("SELECT * FROM users WHERE username=%s OR email=%s", (username, email))
@@ -72,11 +70,6 @@ def register_page():
 
     return render_template('AccountPage/Createaccount.html')
 
-
-
-
-from werkzeug.security import check_password_hash
-
 @app.route('/login_page', methods=['GET', 'POST'])
 def login_page():
     if request.method == 'POST':
@@ -88,7 +81,7 @@ def login_page():
             return redirect(url_for('login_page'))
 
         try:
-            conn = db
+            conn = get_db_connection()
             cursor = conn.cursor(dictionary=True)
             cursor.execute("SELECT * FROM users WHERE email=%s", (email,))
             user = cursor.fetchone()
@@ -104,7 +97,7 @@ def login_page():
                 session['username'] = user['username']
 
                 flash('Login berhasil')
-                return redirect(url_for('test_page'))
+                return redirect(url_for('Home_page'))
             else:
                 flash('Email atau password salah')
                 return redirect(url_for('login_page'))
@@ -116,11 +109,168 @@ def login_page():
 
     return render_template('AccountPage/Loginpage.html')
 
-@app.route('/test_page', methods=['GET', 'POST'])
-def test_page():
-    return render_template('TestPage.html')
+@app.route('/Home_page')
+def Home_page():
 
-print(os.getcwd())
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM books")
+    books = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template(
+        'Homepage.html',
+        books=books
+    )
+
+
+@app.route('/logout')
+def logout():
+    session.clear()  # hapus semua session
+    flash('Berhasil logout')
+    return redirect(url_for('login_page'))
+
+
+
+
+
+############################ dAFTAR API ############################ 
+
+@app.route('/api/users', methods=['GET'])
+def api_users():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute(
+            "SELECT id, username, email FROM users"
+        )
+
+        users = cursor.fetchall()
+
+        cursor.close()
+        conn.close()
+
+        return jsonify({
+            "status": "success",
+            "data": users
+        })
+
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+    
+@app.route('/api/register', methods=['POST'])
+def api_register():
+
+    data = request.get_json()
+
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+
+    if not username or not email or not password:
+        return jsonify({
+            "status": "error",
+            "message": "Semua field harus diisi"
+        }), 400
+
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "SELECT * FROM users WHERE username=%s OR email=%s",
+            (username, email)
+        )
+
+        if cursor.fetchone():
+            cursor.close()
+            conn.close()
+
+            return jsonify({
+                "status": "error",
+                "message": "Username atau email sudah digunakan"
+            }), 409
+
+        hashed_password = generate_password_hash(password)
+
+        cursor.execute(
+            "INSERT INTO users(username,email,password) VALUES(%s,%s,%s)",
+            (username, email, hashed_password)
+        )
+
+        conn.commit()
+
+        cursor.close()
+        conn.close()
+
+        return jsonify({
+            "status": "success",
+            "message": "User berhasil dibuat"
+        }), 201
+
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+    
+
+@app.route('/api/login', methods=['POST'])
+def api_login():
+
+    data = request.get_json()
+
+    email = data.get('email')
+    password = data.get('password')
+
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute(
+            "SELECT * FROM users WHERE email=%s",
+            (email,)
+        )
+
+        user = cursor.fetchone()
+
+        cursor.close()
+        conn.close()
+
+        if not user:
+            return jsonify({
+                "status": "error",
+                "message": "Email tidak ditemukan"
+            }), 404
+
+        if not check_password_hash(
+            user['password'],
+            password
+        ):
+            return jsonify({
+                "status": "error",
+                "message": "Password salah"
+            }), 401
+
+        return jsonify({
+            "status": "success",
+            "user_id": user['id'],
+            "username": user['username']
+        })
+
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

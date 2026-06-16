@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <title>Catalog | Scholarly Modernism</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                extend: {
+                    "colors": {
+                            "error-container": "#ffdad6",
+                            "on-primary-container": "#7c839b",
+                            "surface-container-highest": "#e0e3e5",
+                            "tertiary-fixed": "#dde3eb",
+                            "error": "#ba1a1a",
+                            "background": "#f7f9fb",
+                            "primary-fixed": "#dae2fd",
+                            "secondary-container": "#d5e3fd",
+                            "primary-fixed-dim": "#bec6e0",
+                            "on-primary-fixed": "#131b2e",
+                            "on-secondary-container": "#57657b",
+                            "on-primary": "#ffffff",
+                            "on-primary-fixed-variant": "#3f465c",
+                            "tertiary": "#000000",
+                            "surface-container-lowest": "#ffffff",
+                            "outline": "#76777d",
+                            "surface-container": "#eceef0",
+                            "on-error-container": "#93000a",
+                            "primary-container": "#131b2e",
+                            "on-tertiary-fixed": "#161c22",
+                            "inverse-primary": "#bec6e0",
+                            "surface": "#f7f9fb",
+                            "inverse-surface": "#2d3133",
+                            "on-secondary-fixed": "#0d1c2f",
+                            "on-secondary-fixed-variant": "#3a485c",
+                            "on-tertiary-container": "#7e848c",
+                            "secondary-fixed-dim": "#b9c7e0",
+                            "on-tertiary-fixed-variant": "#41474e",
+                            "outline-variant": "#c6c6cd",
+                            "primary": "#000000",
+                            "inverse-on-surface": "#eff1f3",
+                            "tertiary-container": "#161c22",
+                            "secondary": "#515f74",
+                            "surface-container-low": "#f2f4f6",
+                            "surface-bright": "#f7f9fb",
+                            "secondary-fixed": "#d5e3fd",
+                            "on-secondary": "#ffffff",
+                            "on-background": "#191c1e",
+                            "surface-dim": "#d8dadc",
+                            "on-tertiary": "#ffffff",
+                            "on-surface": "#191c1e",
+                            "tertiary-fixed-dim": "#c1c7cf",
+                            "surface-variant": "#e0e3e5",
+                            "on-error": "#ffffff",
+                            "surface-tint": "#565e74",
+                            "surface-container-high": "#e6e8ea",
+                            "on-surface-variant": "#45464d"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "base": "8px",
+                            "container-max": "1280px",
+                            "stack-lg": "48px",
+                            "margin-desktop": "48px",
+                            "margin-mobile": "20px",
+                            "gutter": "24px",
+                            "stack-sm": "12px",
+                            "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                            "headline-md": ["\"Source Serif 4\""],
+                            "label-sm": ["Hanken Grotesk"],
+                            "label-md": ["Hanken Grotesk"],
+                            "display-lg": ["\"Source Serif 4\""],
+                            "title-lg": ["Hanken Grotesk"],
+                            "body-md": ["Hanken Grotesk"],
+                            "body-lg": ["Hanken Grotesk"],
+                            "headline-sm": ["\"Source Serif 4\""],
+                            "display-lg-mobile": ["\"Source Serif 4\""]
+                    },
+                    "fontSize": {
+                            "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                            "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                            "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+                },
+            }
+        </script>
+
+        <style>
+                body {
+                    background-color: #f7f9fb;
+                    color: #191c1e;
+                }
+                .book-card-shadow:hover {
+                    box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05);
+                }
+                .material-symbols-outlined {
+                    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+                }
+        </style>
+    </head>
+
+    <body class="font-body-md text-on-surface">
+        <!-- TopNavBar -->
+        <header class="w-full top-0 sticky bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline z-50">
+
+            <div class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop h-20">
+                <div class="flex items-center gap-stack-md">
+                    <span class="font-headline-sm text-headline-sm text-primary dark:text-on-primary-fixed tracking-tight">Scholarly Modernism</span>
+
+                    <nav class="hidden md:flex gap-gutter items-center">
+                        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-lg text-body-lg scale-95 active:opacity-80 transition-all" href="#">Home</a>
+                        <a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-bold text-body-lg font-body-lg scale-95 active:opacity-80 transition-all" href="#">Catalog</a>
+                        <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 font-body-lg text-body-lg scale-95 active:opacity-80 transition-all" href="#">Login</a>
+                    </nav>
+
+                </div>
+
+                <div class="flex items-center gap-stack-md">
+                    <div class="hidden md:flex items-center bg-surface-container-low border border-outline-variant px-4 py-2 rounded-lg">
+                        <span class="material-symbols-outlined text-outline mr-2">search</span>
+                        <input class="bg-transparent border-none focus:ring-0 text-label-md font-label-md w-48" placeholder="Search archive..." type="text"/>
+                    </div>
+
+                    <button class="bg-primary text-on-primary px-6 py-2 rounded font-label-sm text-label-sm transition-all hover:opacity-90 active:scale-95">Join</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+            <div class="flex flex-col md:flex-row gap-gutter">
+                <!-- Filter Sidebar -->
+                <aside class="w-full md:w-64 shrink-0 space-y-stack-md">
+                    <div>
+                        <h2 class="font-label-sm text-label-sm text-outline mb-stack-sm tracking-widest">CATEGORIES</h2>
+                        <div class="space-y-2">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="rounded-sm border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                        <span class="text-body-md font-body-md group-hover:text-primary transition-colors">Philosophy</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                        <input checked="" class="rounded-sm border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                        <span class="text-body-md font-body-md group-hover:text-primary transition-colors">Modern History</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="rounded-sm border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                        <span class="text-body-md font-body-md group-hover:text-primary transition-colors">Digital Arts</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                        <input class="rounded-sm border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                        <span class="text-body-md font-body-md group-hover:text-primary transition-colors">Linguistics</span>
+                        </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-outline-variant">
+                        <h2 class="font-label-sm text-label-sm text-outline mb-stack-sm tracking-widest">ERA</h2>
+                        <select class="w-full border-outline-variant bg-surface-container-low text-body-md font-body-md rounded-lg p-2 focus:border-primary focus:ring-1 focus:ring-primary">
+                            <option>All Periods</option>
+                            <option>Early Modernism</option>
+                            <option>Mid-Century Modern</option>
+                            <option>Post-Modernism</option>
+                            <option>Contemporary</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-4 border-t border-outline-variant">
+                        <h2 class="font-label-sm text-label-sm text-outline mb-stack-sm tracking-widest">COLLECTIONS</h2>
+                        
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm cursor-pointer hover:bg-outline-variant transition-colors">Archival</span>
+                            <span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm cursor-pointer hover:bg-outline-variant transition-colors">Rare</span>
+                            <span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm cursor-pointer hover:bg-outline-variant transition-colors">Digital-Only</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Book Grid Content -->
+                <div class="flex-1">
+                    <div class="flex justify-between items-baseline mb-stack-md border-b border-outline-variant pb-stack-sm">
+                        <h1 class="text-headline-md font-headline-md">The Catalog</h1>
+                        <span class="text-label-md font-label-md text-on-surface-variant">Showing 12 of 148 items</span>
+                    </div>
+
+                    <!-- Catalog Grid -->
+                    <div class="grid grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-x-gutter gap-y-stack-lg">
+
+                        <!-- Card 1 -->
+                        {% for book in books %}
+                        <div class="flex flex-col group cursor-pointer transition-all">
+
+                            <div class="aspect-[2/3] w-full bg-surface-container overflow-hidden border border-outline-variant mb-stack-sm transition-transform duration-300 group-hover:-translate-y-1">
+
+                                <img
+                                    src="{{ book.cover_image }}"
+                                    alt="{{ book.title }}"
+                                    class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500"
+                                >
+
+                            </div>
+
+                            <h3 class="font-title-lg text-title-lg mb-1 group-hover:text-primary transition-colors leading-tight">
+                                {{ book.title }}
+                            </h3>
+
+                            <p class="font-label-md text-label-md text-on-surface-variant">
+                                {{ book.author }}
+                            </p>
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full mt-stack-lg bg-surface-container dark:bg-tertiary-container border-t border-outline-variant dark:border-outline">
+        <div class="max-w-container-max mx-auto px-margin-desktop py-stack-md flex flex-col md:flex-row justify-between items-center gap-stack-sm">
+        <div class="flex flex-col items-center md:items-start">
+        <span class="font-headline-sm text-headline-sm text-primary dark:text-on-primary-fixed mb-2">Scholarly Modernism</span>
+        <p class="text-body-md font-body-md text-on-surface-variant dark:text-on-tertiary-container">© 2024 Scholarly Modernism. Curated for the intellectual mind.</p>
+        </div>
+        <nav class="flex flex-wrap justify-center gap-gutter">
+        <a class="text-on-surface-variant dark:text-on-tertiary-container text-label-sm font-label-sm hover:underline decoration-1 underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">Archives</a>
+        <a class="text-on-surface-variant dark:text-on-tertiary-container text-label-sm font-label-sm hover:underline decoration-1 underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+        <a class="text-on-surface-variant dark:text-on-tertiary-container text-label-sm font-label-sm hover:underline decoration-1 underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+        <a class="text-on-surface-variant dark:text-on-tertiary-container text-label-sm font-label-sm hover:underline decoration-1 underline-offset-4 opacity-90 hover:opacity-100 transition-opacity" href="#">Contact Us</a>
+        </nav>
+        </div>
+        </footer>
+
+        <script>
+                // Micro-interaction for hover effects on book cards
+                document.querySelectorAll('.group').forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        const img = card.querySelector('img');
+                        if (img) img.style.transform = 'scale(1.05)';
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        const img = card.querySelector('img');
+                        if (img) img.style.transform = 'scale(1)';
+                    });
+                });
+
+                // Add active classes dynamically based on nav intent
+                const navLinks = document.querySelectorAll('nav a');
+                navLinks.forEach(link => {
+                    if(link.textContent === 'Catalog') {
+                        // Already set via server-side logic/hardcoded for this page
+                    }
+                });
+        </script>
+    </body>
+</html>
